@@ -10,36 +10,70 @@ ______________________________________
 #include <stdlib.h>
 #include <math.h>
 
-int main(int argc, char *argv[]) {
-	//testing variable, applying it to your algorithm for auto-evaluating
-	int testcase = atoi(argv[1]);}
-	
-	//Your codes here
-	void primefactors(int num)
+int primes[9999];
+int sieve(int n)
 {
-    int count;
+	for (size_t i = 0; i < n; i++)
+	{
+		primes[i] = 1;
+	}
 
-    printf("\nPrime Factors of %d are ..\n", num);
-    for(count = 2; num > 1; count++)
-    {
-        while(num % count == 0)
-        {
-            printf("%d ", count);
-            num = num / count;
-        }
-    }
-    printf("\n");
+	//
+	primes[0] = 0;
+	primes[1] = 0;
+	primes[2] = 1;
+	for (size_t i = 2; i * i <= n; i++)
+	{
+		if (primes[i] == 1)
+		{
+			for (size_t j = i * i; j <= n; j += i)
+			{
+				primes[j] = 0;
+			}
+		}
+	}
+	return primes[n];
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-    int num;
+	//testing variable, applying it to your algorithm for auto-evaluating
+	int testcase = atoi(argv[1]);
 
-    printf("Enter a positive integer\n");
-    scanf("%d", &num);
+	//Your codes here
+	// Init sieve of Eratosthenes
+	int isPrime = sieve(testcase);
+	// for (size_t i = 0; i < testcase; i++)
+	// {
+	// 	printf("%zu -> %d\n", i, primes[i]);
+	// }
 
-    primefactors(num);
+	// printf("%s", (isPrime == 0 ? "False" : "True"));
 
-    return 0;
+	int mod = testcase;
+	while (mod > 1)
+	{
+		// printf("outer loop %d\n", mod);
+
+		int i = 1;
+		while (i <= mod+1)
+		{
+			// printf("outer loop %d; i: %d \n", mod, i);
+			// printf("prime %s\n", (sieve(i) == 1 ? "true" : "false"));
+			if (sieve(i) == 1 && (mod % i) == 0)
+			{
+				mod /= i;
+				printf(" %d%s", i, (mod == 1 ? "" : " *"));
+				// printf("mod now is %d\n", mod);
+				break;
+			}
+			else
+			{
+				i++;
+			}
+		}
+	}
+
+	return 0;
 }
 
