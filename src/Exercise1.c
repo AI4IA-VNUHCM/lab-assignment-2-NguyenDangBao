@@ -13,13 +13,20 @@ ______________________________________
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
-int main(int argc, char *argv[]) {
-	//testing variable, applying it to your algorithm for auto-evaluating
-	float distance = atof(argv[1]);
-	int result;
-	//Your codes here
+int main(){
+	float d;
 	
-	printf("%d", result);
+	printf("Input the travel distance (in km) : ");
+	
+	scanf("%f", &d);
+	
+	float ans= 15000;
+	
+	if (d > 2 && d <30) ans+= (d-2)*4*2000;
+	
+	if (d>30) ans+= 28*4*2000 +(d-30)*5000;
+	
+	printf("cost: %.2f VND", ans);
+	
 	return 0;
 }
