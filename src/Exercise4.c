@@ -9,8 +9,19 @@ Ex:
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
-void DecreaseArray(int arr[100], int n){
+int main(int argc, char *argv[]) {
+	//testing variable, applying it to your algorithm for auto-evaluating
+	argc--;
+	int n = argc;
+	int test_array[n],i;
+	for(i=0; i<n;i++)
+		test_array[i] = atoi(argv[i+1]);
+	}
+	//Your codes here
+	void DecreaseArray(int arr[100], int n){
     for(int i=0; i < n; i++){
         for(int j=i+1; j < n; j++){
             if(arr[i] < arr[j]){
@@ -55,3 +66,5 @@ int main(){
     else printf("Try again");
     return 0;
 }
+	
+	

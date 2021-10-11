@@ -11,9 +11,13 @@ ______________________________________
 */
 
 #include <stdio.h>
-int main()
-{
-    int n;
+#include <stdlib.h>
+#include <math.h>
+
+int main() {
+	//testing variable, applying it to your algorithm for auto-evaluating
+	//Your codes here
+	int n;
     int factorial1 = 1; 
     int factorial2 = 1;
     printf("Enter the number: ");
