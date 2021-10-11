@@ -14,22 +14,23 @@ ______________________________________
 #include <stdlib.h>
 #include <math.h>
 
-int main() {
+int main(int argc, char *argv[])
+{
 	//testing variable, applying it to your algorithm for auto-evaluating
+	int n = atoi(argv[1]);
+	int result;
 	//Your codes here
-	int n;
-    int factorial1 = 1; 
-    int factorial2 = 1;
-    printf("Enter the number: ");
-    scanf("%d", &n);
 
-    for(int i = 1; i <= n; i++){
-        if(i%2==0)
-            factorial1 *= i;
-        if(i%2==1)
-            factorial2 *= i;
-    }
-    printf("Factorial of even: %d\n", factorial1);
-    printf("Factorial of odd: %d", factorial2);
-    return 0;
+	result = n % 2 == 0 ? 2 : 1;
+	int counter = n % 2 == 0 ? 2 : 1;
+	// printf("Counter\tResult\n");
+	while (counter <= n)
+	{
+		// printf("%d\t%d\n", counter, result);
+		result = result * counter;
+		counter += 2;
+	}
+
+	printf("%d", result);
+	return 0;
 }
